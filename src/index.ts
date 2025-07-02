@@ -8,7 +8,7 @@ dotenv.config();
 const app = express()
 app.use(express.json());
 app.use(cookieParser());
-const PORT=process.env.PORT;
+const PORT=process.env.PORT||3000;
 
 
 
@@ -24,5 +24,5 @@ app.use('/api/v1',rootRouter)
 
 
 app.listen(PORT,()=>{
-    console.log(`Server is runing at http://localhost:${PORT}`)
+    console.log(`Server is runing on Port : ${PORT}`)
 })
