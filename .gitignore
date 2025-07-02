@@ -1,0 +1,8 @@
+node_modules
+.env
+.env.*.local
+dist
+coverage
+# If you're not intentionally customizing Prisma client path
+/prisma/dev.db
+/prisma/migrations/
