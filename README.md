@@ -9,7 +9,6 @@ This is the backend for a Note Making App built with **Node.js**, **Express**, *
 
 ## 📁 Folder Structure
 
-```
 
 src/
 ├── constants/             # Common constants (e.g., status codes)
@@ -41,7 +40,6 @@ src/
 │   └── validator.ts
 ├── index.ts               # App entrypoint
 
-````
 
 ---
 
