@@ -17,6 +17,11 @@ const PORT=process.env.PORT||3000;
 app.use('/api/v1',rootRouter)
 
 
+app.use((err: Error, req: Request, res: Response) => {
+  console.error("Unhandled Error:", err.message);
+  res.status(500).json({ error: "Internal Server Error" });
+});
+
 
 
 
