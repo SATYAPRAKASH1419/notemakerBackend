@@ -8,7 +8,10 @@ dotenv.config();
 const app = express()
 app.use(express.json());
 app.use(cookieParser());
-const PORT=process.env.PORT||3000;
+const PORT=process.env.PORT||8080;
+app.get("/", (req: Request, res: Response) => {
+  res.send("NoteApp Backend is running on Railway! 🚂");
+});
 
 
 
