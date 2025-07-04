@@ -147,3 +147,37 @@ export const logoutUser = async (req: Request, res: Response) => {
   //=> else => you don't have an account
   //else => invalid body
 };
+
+
+export const getCurrentUser = async (req: Request, res: Response):Promise<void> => {
+  const userId = req.userId;
+
+  if (!userId) {
+    res.status(HTTP_STATUS.UNAUTHORIZED).json({ error: "Unauthorized" });
+    return;
+  }
+
+  try {
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+      select: {
+        id: true,
+        email: true,
+        fname: true,
+        lname: true,
+      },
+    });
+
+    if (!user) {
+       res.status(HTTP_STATUS.NOT_FOUND).json({ error: "User not found" });
+       return
+    }
+
+    res.status(HTTP_STATUS.OK).json({ user });
+    return
+  } catch (error) {
+    console.error("Error in getCurrentUser:", error);
+     res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR).json({ error: "Internal Server Error" });
+  return
+   }
+};
