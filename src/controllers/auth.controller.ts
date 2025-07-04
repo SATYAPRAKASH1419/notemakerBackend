@@ -46,7 +46,7 @@ export const registerUser = async (req: Request, res: Response):Promise<void> =>
             httpOnly:true,
             secure:true,
             sameSite:"none",//need to be strict=> same origin lax=> get req from other origin or "none"=> allows cross-site cookie
-            maxAge:15*60*1000,//15 minutes
+            maxAge:24 * 60 * 60 * 1000,//15 minutes
          })
          
          res.status(HTTP_STATUS.CREATED).json({
@@ -105,7 +105,7 @@ try {
          httpOnly:true,
          secure:true,
          sameSite:"none",
-         maxAge:15*60*1000
+         maxAge:24 * 60 * 60 * 1000
       })
 
       res.status(HTTP_STATUS.OK).json({
