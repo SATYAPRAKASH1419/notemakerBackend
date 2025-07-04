@@ -44,8 +44,8 @@ export const registerUser = async (req: Request, res: Response):Promise<void> =>
 
          res.cookie("token", token,{
             httpOnly:true,
-            secure:process.env.NODE_ENV ==="production",
-            sameSite:process.env.NODE_ENV === "production" ? "none" : "lax",//need to be strict=> same origin lax=> get req from other origin or "none"=> allows cross-site cookie
+            secure:true,
+            sameSite:"none",//need to be strict=> same origin lax=> get req from other origin or "none"=> allows cross-site cookie
             maxAge:15*60*1000,//15 minutes
          })
          
@@ -103,8 +103,8 @@ try {
       
       res.cookie("token",token,{
          httpOnly:true,
-         secure:process.env.NODE_ENV==="production",
-         sameSite:process.env.NODE_ENV==="production"?"none":"lax",
+         secure:true,
+         sameSite:"none",
          maxAge:15*60*1000
       })
 
