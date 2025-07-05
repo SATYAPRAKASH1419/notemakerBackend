@@ -8,7 +8,8 @@ dotenv.config();
 const app = express()
 const allowedOrigins = [
   "http://localhost:5173",
-  "https://noteflowsatya.vercel.app"
+  "https://noteflowsatya.vercel.app",
+ "https://noteflowsatya-qssk5nos8-satya-prakash-swains-projects-9c7de52c.vercel.app"
 ];
 
 app.use(cors({
