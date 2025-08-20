@@ -26,7 +26,7 @@ app.use(express.json());
 app.use(cookieParser());
 const PORT=process.env.PORT||8080;
 app.get("/", (req: Request, res: Response) => {
-  res.send("NoteApp Backend is running on Railway!");
+  res.send("NoteApp Backend is running on Vercel!");
 });
 
 
