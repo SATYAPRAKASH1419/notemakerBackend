@@ -1,5 +1,5 @@
 
-import express, { Request, Response } from "express"
+import express, { Request, Response,NextFunction } from "express"
 import rootRouter from './routes/rootRouter'
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
@@ -36,7 +36,7 @@ app.get("/", (req: Request, res: Response) => {
 app.use('/api/v1',rootRouter)
 
 
-app.use((err: Error, req: Request, res: Response) => {
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   console.error("Unhandled Error:", err.message);
   res.status(500).json({ error: "Internal Server Error" });
 });
@@ -44,8 +44,12 @@ app.use((err: Error, req: Request, res: Response) => {
 
 
 
-
-
+if (process.env.NODE_ENV !== "production") {
+  const PORT = process.env.PORT || 8080;
+  app.listen(PORT, () => {
+    console.log(`Server is running on port: ${PORT}`);
+  });
+}
 
 // app.listen(PORT,()=>{
 //     console.log(`Server is runing on Port : ${PORT}`)
